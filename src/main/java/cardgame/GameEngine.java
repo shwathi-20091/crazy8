@@ -45,6 +45,8 @@ public class GameEngine {
 				break;
 			case 3:
 				return;
+			default:
+				break;
 		}
 	}
 	/**
@@ -103,7 +105,7 @@ public class GameEngine {
         giveInitialCardsToPlayers();
         topPileCard = getStartingTopPileCard();
         while (!matchEnded) {
-            if (deckOfCards.size() > 0) {
+            if (deckOfCards.isEmpty()) {
                 for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
                 		if (playerList.get(i).getMyCards().size() == 0) {
                         	addMatchScore(playerList.get(i));
