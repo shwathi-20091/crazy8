@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 //TicTacToe GameEngine
 //checking
@@ -107,7 +108,7 @@ public class GameEngine {
         while (!matchEnded) {
             if (deckOfCards.isEmpty()) {
                 for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
-                		if (playerList.get(i).getMyCards().size() == 0) {
+                		if (playerList.get(i).getMyCards().isEmpty()) {
                         	addMatchScore(playerList.get(i));
                         	matchEnded = true;
                         	deckOfCards.clear();
@@ -117,17 +118,17 @@ public class GameEngine {
                         	playerList.get(i).getCardToPlay(topPileCard);
                         	topPileCard = playerList.get(i).playCard();
                         	playerList.get(i).getMyCards().remove(0);
-                        	if (playerList.get(i).getMyCards().size() == 0) {
+                        	if (playerList.get(i).getMyCards().isEmpty()) {
                             	addMatchScore(playerList.get(i));
                             	matchEnded = true;
                             	deckOfCards.clear();
                             	break;
                         	}
                     	} else {
-                        	if (deckOfCards.size() != 0) {
+                        	if (!deckOfCards.isEmpty()) {
                         		playerList.get(i).receiveCard(deckOfCards.get(INDEX_OF_TOP_CARD_OF_DECK));
                             	deckOfCards.remove(INDEX_OF_TOP_CARD_OF_DECK);
-                            	if (deckOfCards.size() == 0) {
+                            	if (deckOfCards.isEmpty()) {
                                 	addTiedMatchScore();
                                 	matchEnded = true;
                                 	deckOfCards.clear();
