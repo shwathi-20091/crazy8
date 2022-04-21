@@ -30,7 +30,7 @@ public class Card {
         NINE,
         TEN,
         JACK,
-        QUEEN,
+        QUEEN, 
         KING
     }
 
