@@ -21,7 +21,7 @@ public class GameEngine {
 	private static List<Card> deckOfCards;
 	public static void main(String[] arguments) {
 		//welcome message
-        System.out.println("\n\n");
+        System.out.println("\n================================================\n");
 		System.out.println("\n..........WELCOME TO CRAZY8 CARD GAME..........\n");
 		showOptions();
 	}
