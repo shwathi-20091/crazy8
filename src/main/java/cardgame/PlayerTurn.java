@@ -11,29 +11,29 @@ import java.util.Objects;
 /**
  * Represents an player's action on their turn: either they drew a card or they played a card.
  */
-public class PlayerTurn {
+class PlayerTurn {
 
     /**
      * The ID of the player that this action corresponds to
      */
-    public  int playerId;
+      int playerId;
 
     /**
      * If the player drew a card on their turn
      */
-    public  boolean drewACard;
+     boolean drewACard;
 
     /**
      * The card the player played on their turn, or null if the player didn't play a card.
      */
-    public  Card playedCard;
+      Card playedCard;
 
     /**
      * When a player plays an "8", they can declare what suit the next player must play to.
      * <p>
      * If the player played an "8", this is the suit that they declared. Otherwise, this is null.
      */
-    public  Card.Suit declaredSuit;
+      Card.Suit declaredSuit;
 
     // Convenience methods; you might or might not need these.
 
