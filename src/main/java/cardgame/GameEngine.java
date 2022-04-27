@@ -6,9 +6,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-
-//TicTacToe GameEngine
-//checking
 public class GameEngine {
 
 	private static final int INITIAL_DISPATCHED_CARD = 5;
@@ -21,7 +18,7 @@ public class GameEngine {
 	private static List<Card> deckOfCards;
 	public static void main(String[] arguments) {
 		//welcome message
-        System.out.println("\n================================================\n");
+        System.out.println("\n========================================================\n");
 		System.out.println("\n..........WELCOME TO CRAZY8 CARD GAME..........\n");
 		showOptions();
 	}
@@ -29,7 +26,7 @@ public class GameEngine {
 	 * function to get the options from the user
 	 */
 	public static void showOptions() {
-        System.out.println("\n\n");
+        System.out.println("\n========================================================\n");
 		System.out.println("1.START GAME");
 		System.out.println("2.GUIDE");
 		System.out.println("3.EXIT");
@@ -46,8 +43,6 @@ public class GameEngine {
 				break;
 			case 3:
 				return;
-			default:
-				break;
 		}
 	}
 	/**
@@ -70,12 +65,12 @@ public class GameEngine {
 	 * if user chooses guide, the the instruction is deleted
 	 */
 	public static void guideForPlayGame() {
-        System.out.println("\n\n");
+        System.out.println("\n========================================================\n");
 		System.out.println("Start Game");
 		System.out.println("Enter the players name");
 		System.out.println("Which player first reach 200 points,he is the winner");
 		System.out.println("points detail");
-		System.out.println("1. heart (♥), spade (♠) diamond (♦), club(♣)  containes 10 points");
+		System.out.println("1. heart (â™¥), spade (â™ ) diamond (â™¦), club(â™£)  containes 10 points");
 		System.out.println("Other cards contains the points based on the number");
 		showOptions();
 	}
@@ -106,9 +101,9 @@ public class GameEngine {
         giveInitialCardsToPlayers();
         topPileCard = getStartingTopPileCard();
         while (!matchEnded) {
-            if (deckOfCards.isEmpty()) {
+            if (deckOfCards.size() > 0) {
                 for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
-                		if (playerList.get(i).getMyCards().isEmpty()) {
+                		if (playerList.get(i).getMyCards().size() == 0) {
                         	addMatchScore(playerList.get(i));
                         	matchEnded = true;
                         	deckOfCards.clear();
@@ -118,17 +113,17 @@ public class GameEngine {
                         	playerList.get(i).getCardToPlay(topPileCard);
                         	topPileCard = playerList.get(i).playCard();
                         	playerList.get(i).getMyCards().remove(0);
-                        	if (playerList.get(i).getMyCards().isEmpty()) {
+                        	if (playerList.get(i).getMyCards().size() == 0) {
                             	addMatchScore(playerList.get(i));
                             	matchEnded = true;
                             	deckOfCards.clear();
                             	break;
                         	}
                     	} else {
-                        	if (!deckOfCards.isEmpty()) {
+                        	if (deckOfCards.size() != 0) {
                         		playerList.get(i).receiveCard(deckOfCards.get(INDEX_OF_TOP_CARD_OF_DECK));
                             	deckOfCards.remove(INDEX_OF_TOP_CARD_OF_DECK);
-                            	if (deckOfCards.isEmpty()) {
+                            	if (deckOfCards.size() == 0) {
                                 	addTiedMatchScore();
                                 	matchEnded = true;
                                 	deckOfCards.clear();
@@ -214,9 +209,9 @@ public class GameEngine {
 
 		for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
 			if (playerList.get(i).getTotalScore() >=WIN_SCORE) {
-		        System.out.println("\n\n");
+		        System.out.println("\n========================================================\n");
 				System.out.print("\n"+playersName[i] + ".....IS WINNER....\n");
-		        System.out.println("\n\n");
+		        System.out.println("\n========================================================\n");
 				
 			}
 		
