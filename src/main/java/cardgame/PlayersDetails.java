@@ -112,18 +112,11 @@ public class PlayersDetails implements PlayerStrategy {
      */
     public void getCardToPlay(Card topPileCard) {
         for (int i = 0; i < myCards.size(); i ++) {
-            if (myCards.get(i).getSuit().equals(topPileCard.getSuit())) 
+            if ((myCards.get(i).getSuit().equals(topPileCard.getSuit())) || (myCards.get(i).getRank().equals(topPileCard.getRank()))||(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) )
             {
                 cardToPlay = myCards.get(i);
             } 
-            else if (myCards.get(i).getRank().equals(topPileCard.getRank()))
-             {
-                cardToPlay = myCards.get(i);
-            } 
-            else if (myCards.get(i).getRank().equals(Card.Rank.EIGHT)) 
-            {
-                cardToPlay = myCards.get(i);
-            }
+            
         }
         myCards.remove(cardToPlay);
         myCards.add(0, cardToPlay);
