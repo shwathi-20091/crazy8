@@ -28,7 +28,7 @@ public class GameEngine {
 	 * function to get the options from the user
 	 */
 	public static void showOptions() {
-       // System.out.println("\n"+message+"\n");
+       
 		System.out.println("1.START GAME");
 		System.out.println("2.GUIDE");
 		System.out.println("3.EXIT");
@@ -45,6 +45,8 @@ public class GameEngine {
 				break;
 			case 3:
 				return;
+			default:
+			System.out.println("invalid input");
 		}
 	}
 	/**
@@ -103,9 +105,9 @@ public class GameEngine {
         giveInitialCardsToPlayers();
         topPileCard = getStartingTopPileCard();
         while (!matchEnded) {
-            if (deckOfCards.size() > 0) {
+            if (!deckOfCards.isEmpty()) {
                 for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
-                		if (playerList.get(i).getMyCards().size() == 0) {
+                		if (playerList.get(i).getMyCards().isEmpty()) {
                         	addMatchScore(playerList.get(i));
                         	matchEnded = true;
                         	deckOfCards.clear();
@@ -115,17 +117,17 @@ public class GameEngine {
                         	playerList.get(i).getCardToPlay(topPileCard);
                         	topPileCard = playerList.get(i).playCard();
                         	playerList.get(i).getMyCards().remove(0);
-                        	if (playerList.get(i).getMyCards().size() == 0) {
+                        	if (playerList.get(i).getMyCards().isEmpty()) {
                             	addMatchScore(playerList.get(i));
                             	matchEnded = true;
                             	deckOfCards.clear();
                             	break;
                         	}
                     	} else {
-                        	if (deckOfCards.size() != 0) {
+                        	if (!deckOfCards.isEmpty()) {
                         		playerList.get(i).receiveCard(deckOfCards.get(INDEX_OF_TOP_CARD_OF_DECK));
                             	deckOfCards.remove(INDEX_OF_TOP_CARD_OF_DECK);
-                            	if (deckOfCards.size() == 0) {
+                            	if (deckOfCards.isEmpty()) {
                                 	addTiedMatchScore();
                                 	matchEnded = true;
                                 	deckOfCards.clear();
